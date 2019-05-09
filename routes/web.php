@@ -19,3 +19,9 @@ Route::get('/article', 'ArticleController@index');
 Route::get('/article/{article}', 'ArticleController@show');
 
 Route::post('/post/{article}', 'PostController@create');
+Route::get('/post/{post}', 'PostController@show');
+
+Route::post('/comment/{post}', 'CommentController@create');
+Route::get('/edit/{post}/{comment}', 'CommentController@edit');
+Route::post('/update/{comment}', 'CommentController@update');
+Route::post('/delete/{comment}', 'CommentController@delete');

@@ -22,4 +22,8 @@ class PostController extends Controller
         $post->save();
         return redirect("/article/$post->article_id");
     }
+
+    public function show(Post $post){
+        return view('post_detail', ['post' => $post]);
+    }
 }

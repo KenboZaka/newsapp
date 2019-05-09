@@ -20,7 +20,7 @@
                 </form>
                 <div>
                     @foreach($article->posts as $post)
-                <p>{{$post->content}}</p>
+                <p><a href="/post/{{$post->id}}">{{$post->content}}</a></p>
                     @endforeach
                 </div>
             </div>
