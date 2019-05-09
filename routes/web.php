@@ -19,7 +19,10 @@ Route::get('/article', 'ArticleController@index');
 Route::get('/article/{article}', 'ArticleController@show');
 
 Route::post('/post/{article}', 'PostController@create');
-Route::get('/post/{post}', 'PostController@show');
+Route::get('/detail/{post}', 'PostController@show');
+Route::get('/edit/{post}', 'PostController@edit');
+Route::post('/update/{post}', 'PostController@update');
+Route::post('/delete/{post}', 'PostController@delete');
 
 Route::post('/comment/{post}', 'CommentController@create');
 Route::get('/edit/{post}/{comment}', 'CommentController@edit');

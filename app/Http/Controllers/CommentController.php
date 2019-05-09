@@ -22,7 +22,7 @@ class CommentController extends Controller
    }
 
    public function edit(Post $post, Comment $comment){
-       return view('edit', ['comment' => $comment, 'post'=>$post]);
+       return view('edit_comment', ['comment' => $comment, 'post'=>$post]);
    }
 
    public function update(Request $request, $id, Post $post){
