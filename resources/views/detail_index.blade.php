@@ -20,7 +20,7 @@
                 </form>
                 <a href="/article">一覧に戻る</a>
                 <div>
-                    @foreach($article->posts as $post)
+                    @foreach($posts as $post)
                 <p><a href="/detail/{{$post->id}}">{{$post->content}}</a></p>
                 <form action="/delete/{{$post->id}}" method="post">
                     @csrf

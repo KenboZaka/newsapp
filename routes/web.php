@@ -18,14 +18,21 @@ Route::get('/', function () {
 // 記事
 Route::get('/article', 'ArticleController@index');
 Route::get('/article/{article}', 'ArticleController@show');
-// 投稿
-Route::post('/post/{article}', 'PostController@create');
-Route::get('/detail/{post}', 'PostController@show');
-Route::get('/edit/{post}', 'PostController@edit');
-Route::post('/update/{post}', 'PostController@update');
-Route::post('/delete/{post}', 'PostController@delete');
-// 投稿へのコメント
-Route::post('/comment/{post}', 'CommentController@create');
-Route::get('/edit/{post}/{comment}', 'CommentController@edit');
-Route::post('/update/{comment}', 'CommentController@update');
-Route::post('/delete/{comment}', 'CommentController@delete');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+Route::group(['middleware' => 'auth'], function () {
+    // 投稿
+    Route::post('/post/{article}', 'PostController@create');
+    Route::get('/detail/{post}', 'PostController@show');
+    Route::get('/edit/{post}', 'PostController@edit');
+    Route::post('/update/{post}', 'PostController@update');
+    Route::post('/delete/{post}', 'PostController@delete');
+
+    // 投稿へのコメント
+    Route::post('/comment/{post}', 'CommentController@create');
+    Route::get('/edit/{post}/{comment}', 'CommentController@edit');
+    Route::post('/update/{post}/{comment}', 'CommentController@update');
+    Route::post('/delete/{post}/{comment}', 'CommentController@delete');
+});

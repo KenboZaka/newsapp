@@ -11,7 +11,8 @@
                     <li>{{$post->content}}</li>
                     </ul>
                 </div>
-                <form action="/comment/{{$post->id}}" method="post">
+                {{-- ここ！！ --}}
+                <form action="/comment/{{$post->id}}" method="post">  
                     @csrf
                     <label for="content">投稿内容</label>
                     <textarea name="content" cols="30" rows="10"></textarea>
@@ -23,7 +24,7 @@
                 <div class="card">
                     <div class="card-body">
                         <p class="card-text">{{$comment->content}}</p>
-                        <form action="/delete/{{$comment->id}}" method="post">
+                        <form action="/delete/{{$post->id}}/{{$comment->id}}" method="post">
                             @csrf
                             <input type="submit" value="コメント削除" class="btn btn-danger">
                         </form>
@@ -31,6 +32,7 @@
                     </div>
                 </div>
                 @endforeach
+
             </div>
         </div>
     </div>

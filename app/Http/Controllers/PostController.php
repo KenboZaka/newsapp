@@ -38,7 +38,7 @@ class PostController extends Controller
         // $post->article_id = $article->id;
         $post->user_id = $user->id;
         $post->save();
-        return redirect("/detail/$post->id");
+        return redirect("/article/$post->article_id");
     }
 
     public function delete(Post $post){

@@ -7,8 +7,29 @@
     <title>@yield('title')</title>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    @include('layouts.stylesheet')
+    <script src='{{asset("js/app.js")}}' defer></script>
+  </head>
+  <body class="py-5">
+      <header class="mb-4">
+          <nav class="navbar navbar-expand-sm navbar-dark bg-success fixed-top mb-4">
+              <div class="container">
+              <a href="/article" class="navbar-brand h1">Single_App</a>
+              </div>
+          </nav>
+      </header>
+      <div class="container-fluid my-5">
+        @yield('content')
+      </div>
 
-    @yield('content')
+      <footer class="footer bg-success fixed-bottom">
+          <div class="py-3">
+              <span class="fab fa-twitter"></span>
+              <span class="fab fa-facebook"></span>
+              <p class="float-right text-white mb-0 mr-3">CopyRight  </p>
+          </div>
+      </footer>
 
     
     <!-- Optional JavaScript -->
