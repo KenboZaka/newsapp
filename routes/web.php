@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect('/article');
 });
 
 // 記事
@@ -32,7 +32,9 @@ Route::group(['middleware' => 'auth'], function () {
 
     // 投稿へのコメント
     Route::post('/comment/{post}', 'CommentController@create');
-    Route::get('/edit/{post}/{comment}', 'CommentController@edit');
-    Route::post('/update/{post}/{comment}', 'CommentController@update');
-    Route::post('/delete/{post}/{comment}', 'CommentController@delete');
+
+    // コメントでは編集・削除できないようにする
+    // Route::get('/edit/{post}/{comment}', 'CommentController@edit');
+    // Route::post('/update/{post}/{comment}', 'CommentController@update');
+    // Route::post('/delete/{post}/{comment}', 'CommentController@delete');
 });

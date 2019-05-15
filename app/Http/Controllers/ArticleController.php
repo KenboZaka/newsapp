@@ -16,6 +16,7 @@ class ArticleController extends Controller
 
     public function show(Article $article){
         // if ログインしている場合
+       
         if(Auth::check()){
             $posts = Post::where('article_id', $article->id)->orderBy('created_at','desc')->get();
         }else{

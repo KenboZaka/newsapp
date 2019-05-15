@@ -10,6 +10,9 @@
                     @csrf
                     <label for="content">投稿内容</label>
                     <textarea name="content" cols="30" rows="10">{{$comment->content}}</textarea>
+                    @if($errors->has('content'))
+                    <span class="text-danger">{{$errors->first('content')}}</span>
+                    @endif
                     <input type="submit" value="編集する">
                 </form>
             </div>

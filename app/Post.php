@@ -18,10 +18,10 @@ class Post extends Model
     }
 
     public function articles(){
-        return $this->belongsTo('App\Article');
+        return $this->belongsTo('App\Article', 'article_id');
     }
     public function users(){
-        return $this->belongsTo('App\User');
+        return $this->belongsTo('App\User', 'user_id');
     }
    
 
