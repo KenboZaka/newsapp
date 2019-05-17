@@ -27,7 +27,8 @@ class PostController extends Controller
     }
 
     public function show(Post $post){
-        $post->load('users');
+        $post->load('users','likes');
+        // dd($post);
         return view('post_detail', ['post' => $post]);
     }
 
@@ -37,10 +38,10 @@ class PostController extends Controller
 
     public function update(ValiRequest $request, Post $post, Article $article){
         
-        $user = User::first();
+        $post->load('users', 'articles');
         $post->content = $request->content;
-        // $post->article_id = $article->id;
-        $post->user_id = $user->id;
+        $post->article_id = $request->article_id;
+        $post->user_id = \Auth::user()->id;
         $post->save();
         return redirect("/article/$post->article_id");
     }

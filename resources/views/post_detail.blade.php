@@ -22,11 +22,22 @@
                     </form>
                         <a class="btn edit float-right" href="/edit/{{$post->id}}">Edit</a>
                     @endif
+                    <div>
+                    <form action="/detail/{{$post->id}}/store" method="post">
+                        @csrf
+                        <input type="submit" name="user_id post_id" class="btn btn-primary" value="いいね">
+                    </form>
+                    <i class="far fa-thumbs-up"></i>
+
+
+                            {{-- <span>{{$like->user_id}}</span> --}}
+                    
+                    </div>
                     </div>
                     
                 </div>
                 <div class="clearfix">
-                <a href="/article/{{$post->article_id}}" class="btn btn-secondary float-right mb-3">Back to the article</a>
+                <a href="/article/{{$post->article_id}}" class="btn btn-secondary float-right mb-3">記事に戻る</a>
                 </div>
                 
                 <form action="/comment/{{$post->id}}" method="post" class="card card-form ">
@@ -46,7 +57,7 @@
                     @foreach($post->comments as $comment)
                         <div class="card">
                             <div class="card-header">
-                                <p class="py-1 m-0">名前：{{$comment->users->name}}</p>
+                            <p class="py-1 m-0">名前：<a href="/user/{{$comment->users->id}}">{{$comment->users->name}}</a></p>
                             </div>
                             <div class="card-body">
                                 <p>コメント：{{$comment->content}}</p>

@@ -34,6 +34,7 @@
                     @foreach($posts as $post)
                         <div class="card">
                             <div class="card-body">
+                                <p>名前：<a href="/user/{{$post->users->id}}">{{$post->users->name}}</a></p>
                                 <p>コメント：{{$post->content}}</p>
                                 <a href="/detail/{{$post->id}}" class="btn btn-primary">詳細へ</a>
                             </div>
@@ -43,40 +44,37 @@
             </div>
         </div>
     </div>
-                {{-- ここから下　違うところに貼り付ける予定 --}}
                 
                     
                 
-               
-                    
-                
-      
-    {{-- <div class="" id="exampleModal">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">New message</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              <form action="/update/{{$post->id}}" method="post">
-                <div class="form-group">
-                    <label for="content">Post投稿内容</label>
-                    <textarea class="form-control" name="content" cols="30" rows="10">{{$post->content}}</textarea>
-                    @if($errors->has('content'))
-                    <span class="text-danger">{{$errors->first('content')}}</span>
-                    @endif
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">閉じる</button>
-                    <button type="button" class="btn btn-primary">投稿する</button>
-                </div>
-              </form>
-            </div>
-
+    {{-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">コメント投稿</button>
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">New message</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="form-group">
+                <label for="recipient-name" class="col-form-label">Recipient:</label>
+                <input type="text" class="form-control" id="recipient-name">
+              </div>
+              <div class="form-group">
+                <label for="message-text" class="col-form-label">Message:</label>
+                <textarea class="form-control" id="message-text"></textarea>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Send message</button>
+          </div>
         </div>
-    </div>
-</div> --}}
+      </div>
+    </div> --}}
+    
 @endsection

@@ -4,20 +4,21 @@
         /* background-color:lightslategray; */
     }
     .topics{
-        background-color:lightgray;
+        /* background-color:lightgray; */
     }
     .navbar{
+        background-color:#000033;
         opacity:0.9;
-        border-bottom:#00008b 2px solid;
-        
+        border-bottom:#CC0000 2px solid;
     }
     .navbar-brand{
-        color:#0000cd;
+        color:white;
     }
 
     .footer{
         opacity:0.9;
-        border-top:#ff6347 2px solid;
+        border-top:#CC0000 2px solid;
+        background-color:#000033;
     }
     .card-form{
         border:1px solid rgba(0,0,0,.125)
@@ -32,6 +33,10 @@
     }
     .delete{
         background-color:#ff0000;
+        color:#fff;
+    }
+
+    .fab{
         color:#fff;
     }
 </style>

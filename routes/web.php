@@ -30,9 +30,14 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/update/{post}', 'PostController@update');
     Route::post('/delete/{post}', 'PostController@delete');
 
+    // ユーザーコメント表示
+    Route::get('user/{user}', 'UserController@show');
+
     // 投稿へのコメント
     Route::post('/comment/{post}', 'CommentController@create');
 
+
+    Route::post('/detail/{post}/store', 'LikeController@store');
     // コメントでは編集・削除できないようにする
     // Route::get('/edit/{post}/{comment}', 'CommentController@edit');
     // Route::post('/update/{post}/{comment}', 'CommentController@update');
