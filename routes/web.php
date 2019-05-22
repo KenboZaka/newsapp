@@ -38,8 +38,5 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::post('/like/store/{post}', 'LikeController@store');
     Route::post('/like/delete/{post}', 'LikeController@delete');
-    // コメントでは編集・削除できないようにする
-    // Route::get('/edit/{post}/{comment}', 'CommentController@edit');
-    // Route::post('/update/{post}/{comment}', 'CommentController@update');
-    // Route::post('/delete/{post}/{comment}', 'CommentController@delete');
+
 });

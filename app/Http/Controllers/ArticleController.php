@@ -6,23 +6,18 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Article;
 use App\Post;
+use GuzzleHttp\Client;
 
 class ArticleController extends Controller
 {
-    public function index(Article $articles){
-        $articles = Article::all();
+    public function index(){
 
-        $entertainment = 'CAAqJggKIiBDQkFTRWdvSUwyMHZNREpxYW5RU0FtcGhHZ0pLVUNnQVAB';
-        $sport = 'CAAqJggKIiBDQkFTRWdvSUwyMHZNRFp1ZEdvU0FtcGhHZ0pLVUNnQVAB';
+        $client = new Client;
+        $response = $client->request('GET', 'https://newsapi.org/v2/top-headlines?country=jp&category=entertainment&apiKey=698ccc2205934cd996d267eb9b8b83c1')->getBody()->getContents();
+        $articles = array(json_decode($response))[0]->articles;
+       
+        return view('index.index', ['articles' => $articles]);
 
-        // 取得するニュースのURL
-        $url = 'https://news.google.com/rss/topics/' . $entertainment . '?hl=ja&gl=JP&ceid=JP%3Aja';
-        $feed = file_get_contents($url);
-        $rss = simplexml_load_string($feed);
-        // foreach($rss->channel->item as $item) {
-        //     dd($item);
-        // }
-        return view('index.index', ['articles' => $articles, 'rss'=>$rss]);
     }
 
     public function show(Article $article){
@@ -39,3 +34,17 @@ class ArticleController extends Controller
 }
 
 // 698ccc2205934cd996d267eb9b8b83c1
+
+
+        // $entertainment = 'CAAqJggKIiBDQkFTRWdvSUwyMHZNREpxYW5RU0FtcGhHZ0pLVUNnQVAB';
+        // $sport = 'CAAqJggKIiBDQkFTRWdvSUwyMHZNRFp1ZEdvU0FtcGhHZ0pLVUNnQVAB';
+
+        // 取得するニュースのURL
+        // $url = 'https://news.google.com/rss/topics/' . $entertainment . '?hl=ja&gl=JP&ceid=JP%3Aja';
+        // $feed = file_get_contents($url);
+        // $rss = simplexml_load_string($feed);
+
+        // $articles = Article::all();
+        // foreach($rss->channel->item as $item) {
+        //     dd($item);
+        // }

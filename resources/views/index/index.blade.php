@@ -24,8 +24,11 @@
             
                 <ul class="list-unstyled my-2">
                     @foreach($articles as $article)
-                        <li><a href="/article/{{$article->id}}">{{$article->title}}</a></li>
-                        {{-- <li>{{$article->content}}</li> --}}
+                  <p>{{$article->title}}</p>
+                  <p>{{$article->author}}</p>
+                  <img src="{{$article->urlToImage}}" width="400px">
+                        {{-- <li><a href="/article/{{$article->id}}">{{$article->title}}</a></li>
+                        <li>{{$article->content}}</li> --}}
                     @endforeach
                 </ul>
 
