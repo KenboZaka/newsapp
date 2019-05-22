@@ -16,22 +16,25 @@
                     <div class="card-footer">
 
                     @if($post->user_id == Auth::id())
-                    <form action="/delete/{{$post->id}}" method="post">
+                    <form action="/post/delete/{{$post->id}}" method="post">
                         @csrf
                         <input type="submit" value="Delete" class="btn delete ml-2 px-2 float-right">
                     </form>
-                        <a class="btn edit float-right" href="/edit/{{$post->id}}">Edit</a>
+                        <a class="btn edit float-right" href="/post/edit/{{$post->id}}">Edit</a>
                     @endif
                     <div>
-                    <form action="/detail/{{$post->id}}/store" method="post">
-                        @csrf
-                        <input type="submit" name="user_id post_id" class="btn btn-primary" value="いいね">
-                    </form>
-                    <i class="far fa-thumbs-up"></i>
-
-
-                            {{-- <span>{{$like->user_id}}</span> --}}
-                    
+                    @if($is_like)
+                        <form action="/like/delete/{{$post->id}}" method="post">
+                            @csrf
+                            <input type="submit" name="user_id post_id" class="btn btn-primary" value="取り消し">    
+                        </form>
+                    @else
+                        <form action="/like/store/{{$post->id}}" method="post">
+                            @csrf
+                            <input type="submit" name="user_id post_id" class="btn btn-primary" value="いいね">
+                        </form>
+                    @endif
+                    <i class="far fa-thumbs-up"><span>{{$like_count}}</span></i>  
                     </div>
                     </div>
                     
@@ -40,7 +43,7 @@
                 <a href="/article/{{$post->article_id}}" class="btn btn-secondary float-right mb-3">記事に戻る</a>
                 </div>
                 
-                <form action="/comment/{{$post->id}}" method="post" class="card card-form ">
+                <form action="/comment/create/{{$post->id}}" method="post" class="card card-form ">
                     @csrf
                     <label for="content" class="card-header">投稿内容</label>
                     <textarea name="content" cols="8" rows="8" class="card-body "></textarea>

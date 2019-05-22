@@ -24,16 +24,16 @@ class ValiRequest extends FormRequest
     public function rules()
     {
         return [
-            'content' => 'required|max:50',
+            'content' => 'required|max:255',
         ];
     }
 
-    // public function message()
-    // {
-    //     return [
-    //         'title' => 'required',
-    //         'content' => 'required',
+    public function messages()
+    {
+        return [
+            'content.required' => '投稿内容は必須項目です',
+            'content.max' => '最大255文字までです',
 
-    //     ];
-    // }
+        ];
+    }
 }

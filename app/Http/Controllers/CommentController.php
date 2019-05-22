@@ -13,11 +13,8 @@ class CommentController extends Controller
    
    
     public function create(ValiRequest $request, Post $post, User $user){
-
-    // $user = User::first();
-
+        
        $comment = new Comment;
-
        $comment->load('users', 'posts');
        $comment->content = $request->content;
        $comment->post_id = $request->post_id;

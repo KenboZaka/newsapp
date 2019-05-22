@@ -7,17 +7,19 @@
         <div class="row">
             <div class="col">
                     <div class="card-header">
-                            <p class="py-1 m-0">名前：{{$user->name}} さんの投稿一覧</p>
+                        <p class="py-1 m-0">名前：{{$user->name}} さんの投稿一覧</p>
                     </div>
                     
-                    @foreach($user->posts as $post)
+                    @foreach($posts as $post)
                     <div class="card mb-2">
                         <div class="card-body">
-                            <p>コメント：{{$post->content}}</p>
+                        <p>コメント：{{$post->content}}</p>
                         </div>
                     </div>
                     @endforeach
+                {{$posts->links()}}
             </div>
         </div>
     </div>
+   
 @endsection

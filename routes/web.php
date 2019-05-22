@@ -24,20 +24,20 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::group(['middleware' => 'auth'], function () {
     // 投稿
-    Route::post('/post/{article}', 'PostController@create');
+    Route::post('/post/store', 'PostController@store');
     Route::get('/detail/{post}', 'PostController@show');
-    Route::get('/edit/{post}', 'PostController@edit');
-    Route::post('/update/{post}', 'PostController@update');
-    Route::post('/delete/{post}', 'PostController@delete');
+    Route::get('/post/edit/{post}', 'PostController@edit');
+    Route::post('/post/update/{post}', 'PostController@update');
+    Route::post('/post/delete/{post}', 'PostController@delete');
 
     // ユーザーコメント表示
     Route::get('user/{user}', 'UserController@show');
 
     // 投稿へのコメント
-    Route::post('/comment/{post}', 'CommentController@create');
+    Route::post('/comment/create/{post}', 'CommentController@create');
 
-
-    Route::post('/detail/{post}/store', 'LikeController@store');
+    Route::post('/like/store/{post}', 'LikeController@store');
+    Route::post('/like/delete/{post}', 'LikeController@delete');
     // コメントでは編集・削除できないようにする
     // Route::get('/edit/{post}/{comment}', 'CommentController@edit');
     // Route::post('/update/{post}/{comment}', 'CommentController@update');

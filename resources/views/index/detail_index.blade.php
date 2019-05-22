@@ -18,7 +18,7 @@
                     </div>
                 </div>
                 
-                <form action="/post/{{$article->id}}" method="post" class="card card-form">
+                <form action="/post/store" method="post" class="card card-form">
                     @csrf
                     <label for="content" class="card-header">投稿内容</label>
                     <textarea name="content" cols="8" rows="8" class="card-body "></textarea>

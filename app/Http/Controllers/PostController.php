@@ -7,15 +7,12 @@ use App\Http\Requests\ValiRequest;
 use App\Post;
 use App\Article;
 use App\User;
+use App\Like;
 
 class PostController extends Controller
 {
-    
 
-    public function create(ValiRequest $request){
- 
-        // $user = User::first();
-        // dd($request);
+    public function store(ValiRequest $request){
         $post = new Post;
         $post->load('articles', 'users');
 
@@ -27,9 +24,11 @@ class PostController extends Controller
     }
 
     public function show(Post $post){
+        $my_like = Like::where('user_id', \Auth::id())->where('post_id', $post->id)->first();
+        $is_like = isset($my_like);
+        $like_count = Like::where('post_id', $post->id)->count();
         $post->load('users','likes');
-        // dd($post);
-        return view('post_detail', ['post' => $post]);
+        return view('posts.post_detail', ['post' => $post, 'is_like'=>$is_like, 'like_count'=>$like_count]);
     }
 
     public function edit(Post $post){

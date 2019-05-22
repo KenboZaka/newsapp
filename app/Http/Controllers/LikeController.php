@@ -15,14 +15,15 @@ class LikeController extends Controller
         $like->user_id = \Auth::user()->id;
         $like->post_id = $post->id;
         $like->save();
-        return redirect("/detail/$post->id")->with('like',$like);
+        return redirect("/detail/$post->id");
+    }
 
-        // , ['like'=>$like]
+    public function delete(Post $post){
+
+        // dd($post);
+        $my_like = Like::where('user_id', \Auth::id())->where('post_id', $post->id)->first();
+        $my_like->delete();
+
+        return redirect("detail/$post->id");
     }
 }
-
-		// $posts = Post::latest()->where('category_id', $q['category_id'])->paginate(5);
-		// $posts->load('categories', 'users');
-		// return view('posts.index', [
-		// 	'posts'=>$posts, 
-		// 	'category_id' => $q['category_id']

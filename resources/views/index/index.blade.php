@@ -21,16 +21,14 @@
                     </li>
                 </ul>
 
-                {{-- <div class="tab-content">
-                <div id="tab1" class="tab-pane"> --}}
+            
                 <ul class="list-unstyled my-2">
                     @foreach($articles as $article)
                         <li><a href="/article/{{$article->id}}">{{$article->title}}</a></li>
                         {{-- <li>{{$article->content}}</li> --}}
                     @endforeach
                 </ul>
-                {{-- </div>
-                </div> --}}
+
             </div>
         </div>
     </div>
