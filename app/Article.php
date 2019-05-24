@@ -8,9 +8,8 @@ use App\Post;
 class Article extends Model
 {
     protected $fillable=[
-        'title','content'
+        'title','content','description','image', 'url', 'publishedAt'
     ];
-
     
 
     public function posts(){

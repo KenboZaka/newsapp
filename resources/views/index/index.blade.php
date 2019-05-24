@@ -6,7 +6,22 @@
     <div class="container">
         <div class="row">
             <div class="col">
-                <ul class="nav nav-tabs">
+                <ul class="list-unstyled my-2">
+                    @foreach($articles as $article)
+                  <a href="/article/{{$article->id}}">{{$article->title}}</a>
+                  <a href="{{$article->url}}">ソースページはこちら</a>
+                  <p>{{$article->description}}</p>
+                  <img src="{{$article->image}}" width="200px">
+                    @endforeach
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    
+@endsection
+
+            {{-- <ul class="nav nav-tabs">
                     <li class="nav-item">
                       <a class="nav-link active" href="#">Category 1</a>
                     </li>
@@ -19,23 +34,5 @@
                     <li class="nav-item">
                       <a class="nav-link" href="#">Category 4</a>
                     </li>
-                </ul>
-
-            
-                <ul class="list-unstyled my-2">
-                    @foreach($articles as $article)
-                  <p>{{$article->title}}</p>
-                  <p>{{$article->author}}</p>
-                  <img src="{{$article->urlToImage}}" width="400px">
-                        {{-- <li><a href="/article/{{$article->id}}">{{$article->title}}</a></li>
-                        <li>{{$article->content}}</li> --}}
-                    @endforeach
-                </ul>
-
-            </div>
-        </div>
-    </div>
-
-    
-@endsection
-
+                </ul> --}}
+                {{-- $api_article->array_key($api_article) --}}
