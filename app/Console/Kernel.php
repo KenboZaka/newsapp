@@ -25,9 +25,7 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        // $schedule->call(function(){
-        //     DB::table('articles')->delete();
-        //     })->everyMinute();
+       
         $schedule->command('command:AddArticle')
                     ->dailyAt('13:00');
 

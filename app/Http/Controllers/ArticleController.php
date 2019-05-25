@@ -12,6 +12,7 @@ use App\User;
 
 class ArticleController extends Controller
 {
+
     public function index(){
 =======
 
