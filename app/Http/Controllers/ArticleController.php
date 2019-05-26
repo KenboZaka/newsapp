@@ -4,12 +4,14 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use GuzzleHttp\Client;
 use App\Article;
 use App\Post;
 
 
 class ArticleController extends Controller
 {
+
     public function index(){
         $articles = Article::all();
         return view('index.index', ['articles' => $articles]);
