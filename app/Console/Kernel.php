@@ -25,13 +25,26 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-       
+        // $schedule->call(function(){
+        //     DB::table('articles')->delete();
+        //     })->everyMinute();
         $schedule->command('command:AddArticle')
                     ->dailyAt('13:00');
 
         // $schedule->call(function(){
         //             DB::table('articles')->delete();})->everyMinute();
                 // ->quarterly();
+=======
+       
+        $schedule->command('command:AddArticle')->dailyAt('13:00');
+                            // ->everyMinute();
+                        // ->everyFiveMinutes();
+                    // 
+
+        $schedule->call(function(){
+                    DB::table('articles')->delete();})->quarterly();
+                    // ->everyFiveMinutes();
+>>>>>>> Stashed changes
     }
 
     /**

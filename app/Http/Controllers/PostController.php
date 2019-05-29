@@ -15,12 +15,11 @@ class PostController extends Controller
     public function store(ValiRequest $request){
         $post = new Post;
         $post->load('articles', 'users');
-
         $post->content = $request->content;
         $post->article_id = $request->article_id;
         $post->user_id = $request->user_id;
         $post->save();
-        return redirect("/article/$post->article_id");
+        return redirect("/article/$post->article_id")->with('message', 'コメントが投稿されました。');
     }
 
     public function show(Post $post){
@@ -32,7 +31,7 @@ class PostController extends Controller
     }
 
     public function edit(Post $post){
-        return view('edit_post', ['post' => $post]);
+        return view('posts.edit_post', ['post' => $post]);
     }
 
     public function update(ValiRequest $request, Post $post, Article $article){
@@ -42,7 +41,7 @@ class PostController extends Controller
         $post->article_id = $request->article_id;
         $post->user_id = \Auth::user()->id;
         $post->save();
-        return redirect("/article/$post->article_id");
+        return redirect("/article/$post->article_id")->with('message', "コメントが編集されました。");
     }
 
     public function delete(Post $post){

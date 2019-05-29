@@ -8,7 +8,7 @@ use App\Post;
 class Article extends Model
 {
     protected $fillable=[
-        'title','content','description','image', 'url', 'publishedAt'
+        'title','content','description','image', 'url', 'publishedAt', 'genre'
     ];
     
 

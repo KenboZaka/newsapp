@@ -11,9 +11,11 @@
                     </div>
                     
                     @foreach($posts as $post)
-                    <div class="card mb-2">
+                    <div class="card mb-2">        
                         <div class="card-body">
+                        <p>件名：{{$post->articles->title}}</p>
                         <p>コメント：{{$post->content}}</p>
+                        <p>投稿日：{{$post->created_at->format('Y年m月d日')}}</p>
                         </div>
                     </div>
                     @endforeach

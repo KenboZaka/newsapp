@@ -20,7 +20,7 @@ class CommentController extends Controller
        $comment->post_id = $request->post_id;
        $comment->user_id = $request->user_id;
        $comment->save();
-       return redirect("/detail/$post->id");
+       return redirect("/detail/$post->id")->with('message', "コメントが投稿されました。");
    }
 
 

@@ -7,12 +7,18 @@ use Illuminate\Http\Request;
 use GuzzleHttp\Client;
 use App\Article;
 use App\Post;
+use App\User;
 
 
 class ArticleController extends Controller
 {
-
     public function index(){
+=======
+
+    public function index(Article $article){
+        
+        $article->load('posts');
+>>>>>>> Stashed changes
         $articles = Article::all();
         return view('index.index', ['articles' => $articles]);
     }
@@ -29,4 +35,6 @@ class ArticleController extends Controller
 
         return view('index.detail_index', ['article'=>$article, 'posts' => $posts]);
     }
+
+    
 }

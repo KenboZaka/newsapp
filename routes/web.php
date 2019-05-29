@@ -18,6 +18,7 @@ Route::get('/', function () {
 // 記事
 Route::get('/article', 'ArticleController@index');
 Route::get('/article/{article}', 'ArticleController@show');
+Route::get('/test', 'ArticleController@get_api');
 
 Auth::routes();
 

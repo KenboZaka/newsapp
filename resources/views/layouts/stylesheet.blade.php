@@ -39,4 +39,17 @@
     .fab{
         color:#fff;
     }
+
+    .card-sports{
+        background-color:#000066;
+    }
+    .card-enta{
+        background-color:#004400;
+    }
+    .card-business{
+        background-color:#660000;
+    }
+    .submit_message{
+        background-color:#A4C6FF;
+    }
 </style>
