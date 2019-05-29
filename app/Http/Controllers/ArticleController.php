@@ -12,10 +12,10 @@ use App\User;
 
 class ArticleController extends Controller
 {
-    public function index(){
-=======
 
-    public function index(){
+    public function index(Article $article){
+        
+        // $article->load('posts');
         $articles = Article::all();
         return view('index.index', ['articles' => $articles]);
     }

@@ -14,7 +14,8 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        Commands\AddArticle::class
+        Commands\AddArticle::class,
+        Commands\DelArticle::class
     ];
 
     /**
@@ -26,12 +27,17 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
        
-        $schedule->command('command:AddArticle')
-                    ->dailyAt('13:00');
+        $schedule->command('command:AddArticle')->dailyAt('13:00');
+                            // ->everyMinute();
+                        // ->everyFiveMinutes();
+                    // 
 
+        $schedule->command('command:DelArticle')->weekly();
+                    
+        
         // $schedule->call(function(){
-        //             DB::table('articles')->delete();})->everyMinute();
-                // ->quarterly();
+        //             DB::table('articles')->delete();})->dailyAt('13:00');
+                    // ->everyFiveMinutes();
     }
 
     /**
