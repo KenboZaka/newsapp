@@ -11,7 +11,7 @@
                     <label for="content" class="card-header">編集内容</label>
                     <textarea name="content" cols="8" rows="8" class="card-body ">{{$post->content}}</textarea>
                     @if($errors->has('content'))
-                        <span class="text-danger">{{$errors->first('content')}}</span>
+                    <span class="text-danger">{{$errors->first('content')}}</span>
                     @endif
                     <input type="hidden" name="article_id" value="{{ $post->article_id }}">
                     <input type="submit" value="投稿する" class="btn">

@@ -2,7 +2,7 @@
 <html lang="ja">
   <head>
     <!-- Required meta tags -->
-    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>@yield('title')</title>
@@ -15,7 +15,7 @@
     <script src='{{asset("js/app.js")}}'></script>
   </head>
 
-  <body class="py-5">
+  <body class="py-5" id="top">
         <nav class="navbar navbar-expand-md fixed-top py-3">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
@@ -63,22 +63,20 @@
                       @endguest
                   </ul>
               </div>
-
           </nav>
       </header>
-      <div class="container-fluid my-5">
+      <div class="my-5">
         @yield('content')
       </div>
-
       <footer class="footer py-3 fixed-bottom">
           <div class="py-3">
-              <span class="fab fa-twitter"></span>
-              <span class="fab fa-facebook"></span>
-              <p class="float-right text-white mb-0 mr-3">CopyRight  </p>
+            {{-- <span class="fab fa-twitter"></span>
+              <span class="fab fa-facebook"></span> --}}
+              {{-- <p class="float-right text-white mb-0 mr-3">CopyRight  </p> --}}
+            <a class="btn-lg mr-5 float-right" href="#top">Top</a>
+            <a class="btn-lg mr-5 float-right" href="#bottom">Bottom</a>
           </div>
       </footer>
-
-    
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
@@ -88,3 +86,4 @@
 
 </body>
 </html>
+

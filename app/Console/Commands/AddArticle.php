@@ -51,7 +51,12 @@ class AddArticle extends Command
             $article->image = $sp_article->urlToImage;
             $article->url = $sp_article->url;
             $article->publishedAt = $sp_article->publishedAt;
+
+            if(preg_match('/��/', $article->description)){
+            $article->delete();
+            }else{
             $article->save();
+            }
         }
 
         $client = new Client;
@@ -66,7 +71,12 @@ class AddArticle extends Command
             $article->image = $ent_article->urlToImage;
             $article->url = $ent_article->url;
             $article->publishedAt = $ent_article->publishedAt;
+
+            if(preg_match('/��/', $article->description)){
+            $article->delete();
+            }else{
             $article->save();
+            }
         }
 
         $client = new Client;
@@ -81,7 +91,12 @@ class AddArticle extends Command
             $article->image = $bus_article->urlToImage;
             $article->url = $bus_article->url;
             $article->publishedAt = $bus_article->publishedAt;
+
+            if(preg_match('/��/', $article->description)){
+            $article->delete();
+            }else{
             $article->save();
+            }
         }
     }
 }

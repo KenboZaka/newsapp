@@ -9,7 +9,6 @@
                     <div class="card-header">
                         <p class="py-1 m-0">名前：{{$user->name}} さんの投稿一覧</p>
                     </div>
-                    
                     @foreach($posts as $post)
                     <div class="card mb-2">        
                         <div class="card-body">

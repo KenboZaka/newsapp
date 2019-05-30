@@ -52,4 +52,7 @@
     .submit_message{
         background-color:#A4C6FF;
     }
+    .btn-lg{
+        background-color:#00008b;
+    }
 </style>

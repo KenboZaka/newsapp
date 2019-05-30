@@ -2,104 +2,72 @@
 
 @section('title', 'detail')
 
-
 @section('content')
-
-    <div class="container">
-        <div class="row">
-            <div class="col">
-                <div class="card mb-3">
-                    <div class="card-header">
-                        <p>{{$article->title}}</p>
-                        <p>{{$article->description}}</p>
-                        <a href="{{$article->url}}" target="blank">ソースページはこちら</a>
-                    </div>
-                    <div class="card-body">
-                        <img src="{{$article->image}}" width="400px" class="float-left">
-                        <p>{!!nl2br(e($article->content))!!}</p>
-                    </div>
-                    <div class="card-footer">
-                        <a href="/article" class="btn btn-secondary">一覧に戻る</a>
-                    </div>
-                </div>
-                <div class="accordionPost">
+<div class="container">
+  <div class="row">
+    <div class="col">
+        <div class="card mb-3">
+            <div class="card-header">
+              <p class="lead">{{$article->title}}</p>
+              <p>{{$article->description}}</p>
+            </div>
+            <div class="card-body">
+              @if(isset($article->image))
+                <img src="{{$article->image}}" width="400px" class="float-left">
+              @endif
+                <p>{!!nl2br(e($article->content))!!}</p>
+                <a href="{{$article->url}}" target="blank" class="m-5">ソースページはこちら</a>
+            </div>
+            <div class="card-footer">
+                <a href="/article" class="btn btn-secondary">一覧に戻る</a>
+            </div>
+        </div>
+      <div class="accordionPost">
+        <div class="card">
+            <div class="card-header" id="accordion">
+                <h5>
+                  <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#post" aria-expanded="true" aria-controls="post">
+                      投稿してみませんか？
+                  </button>
+                </h5>
+            </div>
+            @if(Session::has('message'))
+              <div class="submit_message text-center text-secondary">
+                <p class="p-3 m-0">{{ Session::get('message') }}</p>
+              </div>
+            @endif
+            <div id="post" class="collapse" aria-labelledby="post" data-parent="#accordion" >
                 <div class="card">
-                    <div class="card-header" id="accordion">
-                        <h5>
-                            <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#post" aria-expanded="true" aria-controls="post">
-                                投稿してみませんか？
-                            </button>
-                        </h5>
-                    </div>
-                    @if(Session::has('message'))
-                      <div class="submit_message text-center text-secondary">
-                        <p class="p-3 m-0">{{ Session::get('message') }}</p>
+                    <form action="/post/store" method="post" class="card card-form ">
+                      <div class="card-body">
+                        @csrf
+                          <label for="content">投稿内容</label>
+                          <textarea name="content" cols="8" rows="8" class="card-body"></textarea>
+                        @if($errors->has('content'))
+                          <span class="text-danger">{{$errors->first('content')}}</span>
+                        @endif
                       </div>
-                    @endif
-                    <div id="post" class="collapse" aria-labelledby="post" data-parent="#accordion" >
-                        <div class="card">
-                            <div class="card-body">
-                            <form action="/post/store" method="post" class="card card-form ">
-                                @csrf
-                                <label for="content">投稿内容</label>
-                                <textarea name="content" cols="8" rows="8" class="card-body"></textarea>
-                                @if($errors->has('content'))
-                                <span class="text-danger">{{$errors->first('content')}}</span>
-                                @endif
-                                  </div>
-                                  <input type="hidden" name="user_id" value="{{ Auth::id()}}">
-                                  <input type="hidden" name="article_id" value="{{$article->id}}">
-                                  <input type="submit" class="btn btn-primary float-right" value="投稿する">
-                            </form>
-                            </div>
-                        </div>
-                </div>
-                </div>
-                <div class="post_opinions my-5">
-                    @foreach($posts as $post)
-                        <div class="card">
-                            <div class="card-body">
-                                <p>名前：<a href="/user/{{$post->users->id}}">{{$post->users->name}}</a></p>
-                                <p>コメント：{{$post->content}}</p>
-                                <p>投稿日：{{$post->created_at->format('Y年m月d日')}}</p>
-                                <a href="/detail/{{$post->id}}" class="btn btn-primary">詳細へ</a>
-                            </div>
-                        </div>
-                    @endforeach
+                          <input type="hidden" name="user_id" value="{{ Auth::id()}}">
+                          <input type="hidden" name="article_id" value="{{$article->id}}">
+                          <input type="submit" class="btn btn-primary float-right" value="投稿する">
+                    </form>
                 </div>
             </div>
         </div>
       </div>
+        <div class="post_opinions my-5">
+          @foreach($posts as $post)
+            <div class="card">
+              <div class="card-body">
+                <p>名前：<a href="/user/{{$post->users->id}}">{{$post->users->name}}</a></p>
+                <p>コメント：{{$post->content}}</p>
+                <p>投稿日：{{$post->created_at->format('Y年m月d日')}}</p>
+                <a href="/detail/{{$post->id}}" class="btn btn-primary">詳細へ</a>
+              </div>
+            </div>
+          @endforeach
+        </div>
+    </div>
+  </div>
+</div>
 @endsection
-
-
-  {{-- 投稿モダル --}}
-                {{-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#post">コメント投稿しませんか？</button>
-                <div class="modal fade" id="post" tabindex="-1" role="dialog" aria-labelledby="postlabel" aria-hidden="true">
-                  <div class="modal-dialog modal-lg" role="document">
-                    <div class="modal-content">
-                      <div class="modal-header">
-                        <h5 class="modal-title" id="postlabel">コメント投稿</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                          <span aria-hidden="true">&times;</span>
-                        </button>
-                      </div>
-                      <div class="modal-body">
-                        <form method="post" action="/post/store">
-                          @csrf
-                          <div class="form-group">
-                            <label for="content" class="col-form-label">コメント</label>
-                            <textarea class="form-control" name="content" col=40 row=4 id="message-text"></textarea>
-                            @if($errors->has('content'))
-                        <span class="text-danger">{{$errors->first('content')}}</span>
-                            @endif
-                          </div>
-                          <input type="hidden" name="user_id" value="{{ Auth::id()}}">
-                          <input type="hidden" name="article_id" value="{{ $article->id }}">
-                          <input type="submit" class="btn btn-primary float-right" value="送信する">
-                        </form>
-                        <button class="btn btn-secondary" data-dismiss="modal" class="float-right">閉じる</button>
-                      </div>
-                    </div>
-                  </div>
-                </div> --}}

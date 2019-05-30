@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands;
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Console\Command;
 
 class DelArticle extends Command
@@ -37,6 +38,8 @@ class DelArticle extends Command
      */
     public function handle()
     {
-        DB::table('article')->oldest()->take(420)->delete();
+        DB::table('articles')->where("genre", "1")->oldest()->limit(140)->delete();
+        DB::table('articles')->where("genre", "2")->oldest()->limit(140)->delete();
+        DB::table('articles')->where("genre", "3")->oldest()->limit(140)->delete();
     }
 }

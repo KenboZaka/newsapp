@@ -15,7 +15,7 @@ class Kernel extends ConsoleKernel
      */
     protected $commands = [
         Commands\AddArticle::class,
-        Commands\DelArticle::class
+        Commands\DelArticle::class,
     ];
 
     /**
@@ -26,18 +26,9 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-       
+    //    スケジュール毎日１３時更新、毎週7日分削除
         $schedule->command('command:AddArticle')->dailyAt('13:00');
-                            // ->everyMinute();
-                        // ->everyFiveMinutes();
-                    // 
-
         $schedule->command('command:DelArticle')->weekly();
-                    
-        
-        // $schedule->call(function(){
-        //             DB::table('articles')->delete();})->dailyAt('13:00');
-                    // ->everyFiveMinutes();
     }
 
     /**
