@@ -14,8 +14,8 @@ class AddColumnsToArticlesTable extends Migration
     public function up()
     {
         Schema::table('articles', function (Blueprint $table) {
-            $table->text('description');
-            $table->string('image');
+            $table->text('description')->nullable();
+            $table->string('image')->nullable();
             $table->string('url');
             $table->string('publishedAt');
         });
