@@ -21,27 +21,35 @@
                 <div class="card ">
                   <div class="card-body">
                       @if($article->id%2!=0)
+                      <div class="row">
                           <a href="/article/{{$article->id}}" class="lead float-left pb-3 clearfix">{{$article->title}}</a>
-                          <div class="pb-0 col-7 mt-2 float-right">
+                          <div class="pb-0 col-sm-12 mt-2 float-right">
                             <p>{{$article->description}} </p>
-                            <span class="badge badge-info p-3 float-right">コメント数：{{$article->posts->count()}} 件</span>
+                            <span class="badge badge-info mb-2 p-3 float-sm-right clearfix">コメント数：{{$article->posts->count()}} 件</span>
                           </div>
                           @if(isset($article->image))
-                            <img src="{{$article->image}}" width="300px" class="float-left img-thumbnail">
+                          <div class="">
+                            <img src="{{$article->image}}" width="300px" class="float-left img-thumbnail img-fluid">
+                          </div>
                           @endif
+                      </div>
                       @else
+                      <div class="row">
                           <a href="/article/{{$article->id}}" class="lead pb-3 clearfix">{{$article->title}}</a>
-                          <div class="pb-0 col-7 mt-2 float-left">
+                          <div class="pb-0 col-sm-12 mt-2 float-left">
                             <p>{{$article->description}}</p>
-                            <span class="badge badge-info p-3 float-left">コメント数：{{$article->posts->count()}} 件</span>
+                            <span class="badge badge-info mb-2 p-3 float-left">コメント数：{{$article->posts->count()}} 件</span>
                           </div>
                           @if(isset($article->image))
-                            <img src="{{$article->image}}" width="300px" class="float-right img-thumbnail"> 
+                          <div class="col-sm-12">
+                            <img src="{{$article->image}}" width="300px" class="float-sm-right img-thumbnail image-fluid"> 
+                          </div>
                           @endif
+                      </div>
                       @endif
                   </div>
                     <div class="card-footer">
-                        <p class="text-right mb-0">更新日：{{$article->updated_at->format('Y年m月d日')}}</p>
+                        <p class="text-sm-right mb-0">更新日：{{$article->updated_at->format('Y年m月d日')}}</p>
                     </div>
                 </div>
               @endif
@@ -62,27 +70,35 @@
           <div class="card">
             <div class="card-body">
                 @if($article->id%2!=0)
+                <div class="row">
                     <a href="/article/{{$article->id}}" class="lead float-left pb-3 clearfix">{{$article->title}}</a>
-                    <div class="pb-0 col-7 mt-2 float-right">
+                    <div class="pb-0 col-sm-12 mt-2 float-right">
                       <p>{{$article->description}} </p>
-                      <span class="badge badge-info p-3 float-right">コメント数：{{$article->posts->count()}} 件</span>
+                      <span class="badge badge-info mb-2 p-3 float-sm-right clearfix">コメント数：{{$article->posts->count()}} 件</span>
                     </div>
                     @if(isset($article->image))
-                      <img src="{{$article->image}}" width="300px" class="float-left img-thumbnail">
+                    <div class="col-sm-12">
+                      <img src="{{$article->image}}" width="300px" class="float-left img-thumbnail image-fluid">
+                    </div>
                     @endif
+                </div>
                 @else
+                <div class="row">
                     <a href="/article/{{$article->id}}" class="lead pb-3 clearfix">{{$article->title}}</a>
-                    <div class="pb-0 col-7 mt-2 float-left">
+                    <div class="pb-0 col-sm-12 mt-2 float-left">
                       <p>{{$article->description}} </p>
-                      <span class="badge badge-info p-3 float-left">コメント数：{{$article->posts->count()}} 件</span>
+                      <span class="badge badge-info mb-2 p-3 float-left">コメント数：{{$article->posts->count()}} 件</span>
                     </div>
                     @if(isset($article->image))
-                      <img src="{{$article->image}}" width="300px" class="float-right img-thumbnail">
+                    <div class="col-sm-12">
+                      <img src="{{$article->image}}" width="300px" class="float-sm-right img-thumbnail image-fluid">
+                    </div>
                     @endif
+                </div>
                 @endif
             </div>
             <div class="card-footer">
-                <p class="text-right mb-0">更新日：{{$article->updated_at->format('Y年m月d日')}}</p>
+                <p class="text-sm-right mb-0">更新日：{{$article->updated_at->format('Y年m月d日')}}</p>
             </div>
           </div>
         @endif
@@ -103,27 +119,35 @@
               <div class="card">
                   <div class="card-body">
                       @if($article->id%2!=0)
+                      <div class="row">
                           <a href="/article/{{$article->id}}" class="lead float-left pb-3 clearfix">{{$article->title}}</a>
-                          <div class="pb-0 col-7 mt-2 float-right">
+                          <div class="pb-0 mt-2 col-sm-12 float-right">
                             <p>{{$article->description}} </p>
-                            <span class="badge badge-info p-3 float-right">コメント数：{{$article->posts->count()}} 件</span>
+                            <span class="badge badge-info mb-2 p-3 float-sm-right clearfix">コメント数：{{$article->posts->count()}} 件</span>
                           </div>
                           @if(isset($article->image))
-                            <img src="{{$article->image}}" width="300px" class="float-left img-thumbnail">
+                          <div class="col-sm-12">
+                            <img src="{{$article->image}}" width="300px" class="float-left img-thumbnail image-fluid">
+                          </div>
                           @endif
+                      </div>
                       @else
+                      <div class="row">
                           <a href="/article/{{$article->id}}" class="lead pb-3 clearfix">{{$article->title}}</a>
-                          <div class="pb-0 col-7 mt-2 float-left">
+                          <div class="pb-0 col-sm-12 mt-2 float-left">
                             <p>{{$article->description}} </p>
-                            <span class="badge badge-info p-3 float-left">コメント数：{{$article->posts->count()}} 件</span>
+                            <span class="badge badge-info mb-2 p-3 float-left">コメント数：{{$article->posts->count()}} 件</span>
                           </div>
                           @if(isset($article->image))
-                            <img src="{{$article->image}}" width="300px" class="float-right img-thumbnail">
+                          <div class="col-sm-12">
+                            <img src="{{$article->image}}" width="300px" class="float-sm-right img-thumbnail image-fluid">
+                          </div>
                           @endif
+                      </div>
                       @endif
                   </div>
                   <div class="card-footer">
-                      <p class="text-right mb-0">更新日：{{$article->updated_at->format('Y年m月d日')}}</p>
+                      <p class="text-sm-right mb-0">更新日：{{$article->updated_at->format('Y年m月d日')}}</p>
                   </div>
               </div>
             @endif

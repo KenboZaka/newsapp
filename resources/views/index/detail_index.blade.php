@@ -38,11 +38,11 @@
             @endif
             <div id="post" class="collapse" aria-labelledby="post" data-parent="#accordion" >
                 <div class="card">
-                    <form action="/post/store" method="post" class="card card-form ">
-                      <div class="card-body">
-                        @csrf
+                    <div class="card-body">
+                    <form action="/post/store" method="post" class="card card-form">
+                      @csrf
                           <label for="content">投稿内容</label>
-                          <textarea name="content" cols="8" rows="8" class="card-body"></textarea>
+                          <textarea name="content" cols="8" rows="8" class="card-body p-2"></textarea>
                         @if($errors->has('content'))
                           <span class="text-danger">{{$errors->first('content')}}</span>
                         @endif
