@@ -8,13 +8,14 @@ use GuzzleHttp\Client;
 use App\Article;
 use App\Post;
 use App\User;
+use App\Like;
 
 
 class ArticleController extends Controller
 {
 
-    public function index(Article $article){
-
+    public function index(){
+        
         $articles = Article::all();
         return view('index.index', ['articles' => $articles]);
     }

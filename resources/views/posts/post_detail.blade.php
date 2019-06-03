@@ -15,6 +15,7 @@
                       <p>コメント：{!!nl2br(e($post->content))!!}</p>
                     </div>
                     <div class="card-footer p-3">
+                    {{-- いいね機能実装 --}}
                       @if($post->user_id == Auth::id())
                         <form action="/post/delete/{{$post->id}}" method="post" class="m-0">
                             @csrf
@@ -40,6 +41,7 @@
                         @endif
                         </div>
                     </div>
+                    {{-- いいね機能　ここまで --}}
                 </div>
             <div class="clearfix">
               <a href="/article/{{$post->article_id}}" class="btn btn-secondary float-right mb-3">記事に戻る</a>
@@ -53,6 +55,7 @@
                               </button>
                           </h5>
                       </div>
+                      {{-- 投稿が完了したらメッセージを表示 --}}
                       @if(Session::has('message'))
                     <div class="submit_message text-center text-secondary">
                       <p class="p-3 m-0">{{ Session::get('message') }}</p>
@@ -78,6 +81,7 @@
                       </div>
                   </div>
                 <div class="post_opinions my-5">
+                    {{-- ポストに対するコメント一覧 --}}
                     @foreach($post->comments as $comment)
                         <div class="card">
                             <div class="card-header">

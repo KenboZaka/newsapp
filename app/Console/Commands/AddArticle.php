@@ -52,6 +52,7 @@ class AddArticle extends Command
             $article->url = $sp_article->url;
             $article->publishedAt = $sp_article->publishedAt;
             
+            // 文字化けがあった場合は削除
             if(preg_match('/��/', $article->description)){
             $article->delete();
             }else{
@@ -71,7 +72,8 @@ class AddArticle extends Command
             $article->image = $ent_article->urlToImage;
             $article->url = $ent_article->url;
             $article->publishedAt = $ent_article->publishedAt;
-
+                
+            // 文字化けがあった場合は削除
             if(preg_match('/��/', $article->description)){
             $article->delete();
             }else{
@@ -91,7 +93,8 @@ class AddArticle extends Command
             $article->image = $bus_article->urlToImage;
             $article->url = $bus_article->url;
             $article->publishedAt = $bus_article->publishedAt;
-
+            
+            // 文字化けがあった場合は削除
             if(preg_match('/��/', $article->description)){
             $article->delete();
             }else{

@@ -1,6 +1,7 @@
 <style>
     body{
         padding-top:100px;
+        font-family: Courier;
         /* background-color:lightslategray; */
     }
     .topics{
@@ -13,12 +14,20 @@
     }
     .navbar-brand{
         color:white;
+        font-family: Courier;
+    }
+    .navbar-nav{
+        font-family: Courier;
     }
 
     .footer{
         opacity:0.9;
         border-top:#CC0000 2px solid;
         background-color:#000033;
+        font-family: Courier;
+    }
+    .accordion-tag{
+        font-family: Courier;
     }
     .card-form{
         border:1px solid rgba(0,0,0,.125)
@@ -55,4 +64,5 @@
     .btn-lg{
         background-color:#00008b;
     }
+   
 </style>
