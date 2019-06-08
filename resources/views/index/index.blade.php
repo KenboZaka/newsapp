@@ -97,7 +97,7 @@
                     {{-- コメント投稿があれば１件だけ表示 --}}
                     <?php $i=0; ?>
                       @forelse($article->posts as $post)
-                        <div class="card col-sm-8 m-2">
+                        <div class="card col-sm-8 m-2 p-0">
                             <div class="card-header">
                               <h6 class="m-0">他のユーザーさんの投稿</h6>
                             </div>
@@ -157,7 +157,7 @@
                         {{-- コメント投稿があれば１件だけ表示 --}}
                           <?php $i=0; ?>
                             @forelse($article->posts as $post)
-                              <div class="card col-sm-8 m-2">
+                              <div class="card col-sm-8 m-2 p-0">
                                 <div class="card-header">
                                   <h6 class="m-0">他のユーザーさんの投稿</h6>
                                 </div>

@@ -8,7 +8,7 @@
         /* background-color:lightgray; */
     }
     .navbar{
-        background-color:#000033;
+        background-color:#BBBBBB;
         opacity:0.9;
         border-bottom:#CC0000 2px solid;
     }
@@ -23,7 +23,7 @@
     .footer{
         opacity:0.9;
         border-top:#CC0000 2px solid;
-        background-color:#000033;
+        background-color:#BBBBBB;
         font-family: Courier;
     }
     .accordion-tag{
@@ -50,19 +50,19 @@
     }
 
     .card-sports{
-        background-color:#000066;
+        background-color:#5D99FF;
     }
     .card-enta{
-        background-color:#004400;
+        background-color:#4DF9B9;
     }
     .card-business{
-        background-color:#660000;
+        background-color:#FF8856;
     }
     .submit_message{
         background-color:#A4C6FF;
     }
     .btn-lg{
-        background-color:#00008b;
+        background-color:#999999;
     }
    
 </style>

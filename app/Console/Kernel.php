@@ -27,8 +27,11 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
     //    スケジュール毎日１３時更新、毎週7日分削除としていますが、heroku上ではスケジューラが10分毎のみの対応なので、手動で記事取得
-        // $schedule->command('command:AddArticle')->dailyAt('13:00');
-        // $schedule->command('command:DelArticle')->weekly();
+        $schedule->command('command:AddArticle')->dailyAt('13:00');
+        // ->everyMinute();
+        $schedule->command('command:DelArticle')->weekly();
+        // ->everyMinute();
+        
     }
 
     /**
